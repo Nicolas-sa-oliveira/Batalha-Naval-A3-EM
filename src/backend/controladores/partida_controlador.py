@@ -166,7 +166,7 @@ class PartidaControlador:
             if (turno % 2 == 0):
                 resultado = TabuleiroControlador.disparo(tabuleiro, "a", coord_x, coord_y)
                 if resultado == True:
-                    if repeticoes < 3:
+                    if repeticoes < 2:
                         cls.atualizar_repeticoes_por_id(id)
                         return {"message": "Embarcação Encontrada!"}
                     cls.atualizar_repeticoes_por_id(id)
