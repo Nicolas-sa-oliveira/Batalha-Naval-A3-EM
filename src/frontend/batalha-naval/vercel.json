@@ -1,9 +1,0 @@
-{
-  "builds": [
-    { "src": "frontend/batalha-naval/package.json", "use": "@vercel/next" }
-  ],
-  "routes": [
-    { "src": "/(.*)", "dest": "frontend/batalha-naval/.next/$1" }
-  ]
-}
-
