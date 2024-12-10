@@ -1,5 +1,5 @@
-from src.backend.modelos.tabuleiro import Tabuleiro
-from src.backend.modelos.jogador import Jogador
+from modelos.tabuleiro import Tabuleiro
+from modelos.jogador import Jogador
 import itertools
 
 # Classe modelo da partida. Possui dois jogadores participantes e o tabuleiro.

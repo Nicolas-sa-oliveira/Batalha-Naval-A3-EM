@@ -28,7 +28,9 @@ export default function Fila() {
   // Função para entrar na fila
   const entrarNaFila = async () => {
     try {
-        const response = await fetch(`https://web-production-cc859.up.railway.app/fila/entrar/${nomeJogador}/?token=${token}`, {
+
+        const response = await fetch(`https://web-production-cc859.up.railway.app/fila/entrar/${nomeJogador}`, {
+
             method: "POST" 
         });
         const data = await response.json();
@@ -52,7 +54,9 @@ export default function Fila() {
   // Função para checar o status da partida
   const checarStatusPartida = async () => {
     try {
-      const response = await fetch(`https://web-production-cc859.up.railway.app/fila/checagem/${nomeJogador}?token=${token}`);
+
+      const response = await fetch(`https://web-production-cc859.up.railway.app/fila/checagem/${nomeJogador}`);
+
       const data = await response.json();
       setMensagem(data.message || "Você não está em uma partida.");
     } catch (error) {

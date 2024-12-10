@@ -1,4 +1,4 @@
-from src.backend.modelos.embarcacao import Embarcacao
+from modelos.embarcacao import Embarcacao
 import copy
 
 # Método que representa a parte to tabuleiro

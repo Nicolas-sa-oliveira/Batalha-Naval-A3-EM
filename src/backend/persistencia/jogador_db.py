@@ -1,5 +1,5 @@
-from src.backend.modelos.jogador import Jogador
-from src.backend.persistencia.config_db import ConfigDB
+from modelos.jogador import Jogador
+from persistencia.config_db import ConfigDB
 
 # DB do jogador aplicando singleton. Salva mudanças no banco de dados.
 class JogadorDB():

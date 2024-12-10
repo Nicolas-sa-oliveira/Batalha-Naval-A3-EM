@@ -1,4 +1,4 @@
-from src.backend.modelos.fila import Fila
+from modelos.fila import Fila
 
 # DB da fila aplicando singleton.
 class FilaDB():

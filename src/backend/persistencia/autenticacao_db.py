@@ -1,4 +1,4 @@
-from src.backend.modelos.autenticacao_sessao import AutenticacaoSessao
+from modelos.autenticacao_sessao import AutenticacaoSessao
 from datetime import datetime, timedelta
 import hashlib
 

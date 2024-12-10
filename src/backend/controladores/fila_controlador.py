@@ -1,6 +1,6 @@
-from src.backend.persistencia.fila_db import FilaDB
-from src.backend.controladores.jogador_controlador import JogadorControlador
-from src.backend.controladores.partida_controlador import PartidaControlador
+from persistencia.fila_db import FilaDB
+from controladores.jogador_controlador import JogadorControlador
+from controladores.partida_controlador import PartidaControlador
 from enum import Enum 
 
 # Classe para definir erros do controlador da fila.

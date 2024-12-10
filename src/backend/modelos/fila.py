@@ -1,4 +1,4 @@
-from src.backend.modelos.jogador import Jogador
+from modelos.jogador import Jogador
 
 # Classe modelo para fila para entrar em partidas. Usa métodos de inscrição e desinscrição.
 class Fila():
