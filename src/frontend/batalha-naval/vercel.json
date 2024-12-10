@@ -1,10 +1,10 @@
 {
   "builds": [
-    {"src": "URLs:app", "use": "@now/python"},
-    {"src": "frontend/batalha-naval/package.json", "use" : "@vercel/next"}
+    { "src": "frontend/batalha-naval/package.json", "use": "@vercel/next" },
+    { "src": "URLs.py", "use": "@vercel/python" }
   ],
-  
   "routes": [
-    {"src": "/(.*)", "dest": "URLs:app"}
+    { "src": "/api/(.*)", "dest": "URLs:app" },  
+    { "src": "/(.*)", "dest": "frontend/batalha-naval/.next/$1" } 
   ]
 }
