@@ -67,7 +67,7 @@ export default function Fila() {
   }, []);
 
   return (
-    <div style={{ padding: "20px" }}>
+    <div style={{ padding: "20px"}}>
       <h1>Gerenciamento da Fila</h1>
 
       {/* Formulário para entrar na fila */}

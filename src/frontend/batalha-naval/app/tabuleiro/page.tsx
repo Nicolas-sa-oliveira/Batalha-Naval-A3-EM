@@ -29,11 +29,11 @@ export default function Home() {
   const id = 1;
 
   const cor = {
-    '1': '#191970',
-    '2': '#00008B',
-    '3': '#1E90FF',
-    '4': '#A9A9A9',
-    'default': '#40E0D0',
+    '1': '#90EE90',
+    '2': '#006400',
+    '3': '#3CB371',
+    '4': '#2E8B57',
+    'default': '#00BFFF',
   };
 
   useEffect(() => {
@@ -175,6 +175,7 @@ export default function Home() {
                 alignItems: 'center',
                 justifyContent: 'center',
                 fontWeight: 'bold',
+                
               }}
             >
               {numero}
@@ -191,6 +192,7 @@ export default function Home() {
                 alignItems: 'center',
                 justifyContent: 'center',
                 fontWeight: 'bold',
+                
               }}
             >
               {letras[i]}
@@ -206,7 +208,7 @@ export default function Home() {
                   alignItems: 'center',
                   justifyContent: 'center',
                   backgroundColor: cor[celula as keyof typeof cor] || cor.default,
-                  color: cor[celula as keyof typeof cor] ? 'white' : 'white',
+                  color: cor[celula as keyof typeof cor] ? cor[celula as keyof typeof cor] : cor.default,
                   margin: '1px',
                 }}
               >
@@ -244,7 +246,7 @@ export default function Home() {
           </div>
         ))}
         {message && (<p style={{
-          color: message === 'Peça colocada' ? 'green' : 'red',
+          color: message === 'Peça colocada' ? '#00FF00' : '#FF0000',
           fontWeight: 'bold',
         }}>
           {message}
