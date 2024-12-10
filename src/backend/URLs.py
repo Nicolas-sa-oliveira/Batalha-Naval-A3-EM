@@ -1,10 +1,10 @@
 #from typing import Union
 from fastapi import FastAPI, Request, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
-from controladores.jogador_controlador import JogadorControlador
-from controladores.autenticacao_controlador import AutenticacaoControlador
-from controladores.fila_controlador import FilaControlador
-from controladores.partida_controlador import PartidaControlador
+from src.backend.controladores.jogador_controlador import JogadorControlador
+from src.backend.controladores.autenticacao_controlador import AutenticacaoControlador
+from src.backend.controladores.fila_controlador import FilaControlador
+from src.backend.controladores.partida_controlador import PartidaControlador
 import uvicorn
 
 
@@ -38,8 +38,6 @@ async def read_root():
     "hello world"
    }
 
-token : str = "123"
-
 # ========================== Jogador
 
 @app.get("/jogadores/lista_de_jogadores")
@@ -59,8 +57,7 @@ async def adicionar_jogador(nome: str, email: str, senha: str):
     return JogadorControlador.adicionar_jogador(nome, email, senha)
 
 @app.patch("/jogadores/edição/{nome}/{email}")
-# async def editar_jogador_por_nome(nome: str, email: str, token: str):
-async def editar_jogador_por_nome(nome: str, email: str):
+async def editar_jogador_por_nome(nome: str, email: str, token: str):
     checagem = AutenticacaoControlador.checar_chave(token, nome)
     if (checagem == True):
         return JogadorControlador.editar_jogador_por_nome(nome, email)
@@ -68,8 +65,7 @@ async def editar_jogador_por_nome(nome: str, email: str):
         return {"message": "Não autenticado"}
 
 @app.patch("/jogadores/nova_senha/{nome}/{nova_senha}")
-# async def editar_senha_do_jogador(nome: str, nova_senha: str, token: str):
-async def editar_senha_do_jogador(nome: str, nova_senha: str):
+async def editar_senha_do_jogador(nome: str, nova_senha: str, token: str):
     checagem = AutenticacaoControlador.checar_chave(token, nome)
     if (checagem == True):
         return JogadorControlador.editar_senha_do_jogador(nome, nova_senha)
@@ -77,8 +73,7 @@ async def editar_senha_do_jogador(nome: str, nova_senha: str):
         return {"message": "Não autenticado"}
 
 @app.delete("/jogadores/remoção/{nome}")
-# async def remover_jogador_por_nome(nome: str, token: str):
-async def remover_jogador_por_nome(nome: str):
+async def remover_jogador_por_nome(nome: str, token: str):
     checagem = AutenticacaoControlador.checar_chave(token, nome)
     if (checagem == True):
         return JogadorControlador.remover_jogador_por_nome(nome)
@@ -94,8 +89,7 @@ def autenticar(nome: str, senha: str):
 # ========================== Fila
 
 @app.post("/fila/entrar/{nome_jogador}")
-# async def entrar_na_fila(nome_jogador: str, token: str):
-async def entrar_na_fila(nome_jogador: str):
+async def entrar_na_fila(nome_jogador: str, token: str):
     checagem = AutenticacaoControlador.checar_chave(token, nome_jogador)
     if (checagem == True):
         return FilaControlador.inscrever_na_fila(nome_jogador)
@@ -103,8 +97,7 @@ async def entrar_na_fila(nome_jogador: str):
         return {"message": "Não autenticado"}
 
 @app.post("/fila/sair/{nome_jogador}")
-# async def sair_da_fila(nome_jogador: str, token: str):
-async def sair_da_fila(nome_jogador: str):
+async def sair_da_fila(nome_jogador: str, token: str):
     checagem = AutenticacaoControlador.checar_chave(token, nome_jogador)
     if (checagem == True):
         return FilaControlador.desinscrever_da_fila(nome_jogador)
@@ -116,8 +109,7 @@ async def mostrar_jogadores_na_fila():
     return FilaControlador.mostrar_jogadores_na_fila()
 
 @app.get("/fila/checagem/{nome_jogador}")
-# async def checar_começo_de_partida(nome_jogador: str, token: str):
-async def checar_começo_de_partida(nome_jogador: str):
+async def checar_começo_de_partida(nome_jogador: str, token: str):
     checagem = AutenticacaoControlador.checar_chave(token, nome_jogador)
     if (checagem == True):
         return FilaControlador.checar_confirmacao_da_partida(nome_jogador)
@@ -127,8 +119,7 @@ async def checar_começo_de_partida(nome_jogador: str):
 # ========================== Partida
 
 @app.get("/partida/tabuleiro/{id}/{nome_jogador}")
-# async def pegar_representacao_tabuleiro_partida(id: int, nome_jogador: str, token: str):
-async def pegar_representacao_tabuleiro_partida(id: int, nome_jogador: str):
+async def pegar_representacao_tabuleiro_partida(id: int, nome_jogador: str, token: str):
     checagem = AutenticacaoControlador.checar_chave(token, nome_jogador)
     if (checagem == True):
         return PartidaControlador.pegar_representacao_tabuleiro_partida(id, nome_jogador)
@@ -136,8 +127,7 @@ async def pegar_representacao_tabuleiro_partida(id: int, nome_jogador: str):
         return {"message": "Não autenticado"}
 
 @app.get("/partida/embarcacoes/peças/{id}/{nome_jogador}")
-# async def checar_embarcacoes_disponiveis(id: int, nome_jogador: str, token: str):
-async def checar_embarcacoes_disponiveis(id: int, nome_jogador: str):
+async def checar_embarcacoes_disponiveis(id: int, nome_jogador: str, token: str):
     checagem = AutenticacaoControlador.checar_chave(token, nome_jogador)
     if (checagem == True):
         return PartidaControlador.checar_embarcacoes_disponiveis(id, nome_jogador)
@@ -145,8 +135,7 @@ async def checar_embarcacoes_disponiveis(id: int, nome_jogador: str):
         return {"message": "Não autenticado"}
 
 @app.patch("/partida/tabuleiro/peças/{id}/{nome_jogador}/{embarcacao}/{coord_x}/{coord_y}/{orientacao}")
-# async def colocar_embarcacao_tabuleiro(id: int, nome_jogador: str, embarcacao: str, coord_x: str, coord_y: int, orientacao: str, token: str):
-async def colocar_embarcacao_tabuleiro(id: int, nome_jogador: str, embarcacao: str, coord_x: str, coord_y: int, orientacao: str):
+async def colocar_embarcacao_tabuleiro(id: int, nome_jogador: str, embarcacao: str, coord_x: str, coord_y: int, orientacao: str, token: str):
     checagem = AutenticacaoControlador.checar_chave(token, nome_jogador)
     if (checagem == True):
         return PartidaControlador.colocar_embarcacao_tabuleiro(id, nome_jogador, embarcacao, coord_x, coord_y, orientacao)
@@ -154,8 +143,7 @@ async def colocar_embarcacao_tabuleiro(id: int, nome_jogador: str, embarcacao: s
         return {"message": "Não autenticado"}
 
 @app.get("/partida/tabuleiro/disparo/{id}/{nome_jogador}/{coord_x}/{coord_y}")
-# async def realizar_disparo(id: int, nome_jogador: str, coord_x: str, coord_y: int, token: str):
-async def realizar_disparo(id: int, nome_jogador: str, coord_x: str, coord_y: int):
+async def realizar_disparo(id: int, nome_jogador: str, coord_x: str, coord_y: int, token: str):
     checagem = AutenticacaoControlador.checar_chave(token, nome_jogador)
     if (checagem == True):
         return PartidaControlador.realizar_disparo(id, nome_jogador, coord_x, coord_y)

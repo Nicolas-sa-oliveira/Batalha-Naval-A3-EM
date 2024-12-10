@@ -1,5 +1,5 @@
-from persistencia.autenticacao_db import AutenticacaoDB
-from controladores.jogador_controlador import JogadorControlador
+from src.backend.persistencia.autenticacao_db import AutenticacaoDB
+from src.backend.controladores.jogador_controlador import JogadorControlador
 from enum import Enum
 import hashlib
 

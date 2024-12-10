@@ -1,4 +1,4 @@
-from modelos.partida import Partida
+from src.backend.modelos.partida import Partida
 
 # DB das partidas aplicando singleton.
 class PartidaDB():

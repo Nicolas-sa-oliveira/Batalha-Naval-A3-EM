@@ -56,9 +56,7 @@ export default function Home() {
 
     const fetchTabuleiros = async () => {
       try {
-
-        const url = `https://web-production-cc859.up.railway.app/partida/tabuleiro/${id}/${nomeJogador}`;
-
+        const url = `https://web-production-cc859.up.railway.app/partida/tabuleiro/${id}/${nomeJogador}/?token=${token}`;
         const response = await fetch(url);
         if (!response.ok) {
           throw new Error('Erro ao buscar os tabuleiros');
@@ -106,8 +104,7 @@ export default function Home() {
     }
 
     try {
-
-      const url = `https://web-production-cc859.up.railway.app/partida/tabuleiro/peças/${id}/${nomeJogador}/${embarcacao}/${coordX}/${coordY}/${orientacao}`;
+      const url = `https://web-production-cc859.up.railway.app/partida/tabuleiro/peças/${id}/${nomeJogador}/${embarcacao}/${coordX}/${coordY}/${orientacao}/?token=${token}`;
       const response = await fetch(url, {
         method: 'PATCH',
         headers: {
@@ -122,10 +119,7 @@ export default function Home() {
         throw new Error('Erro ao enviar os dados para a API');
       }
       const updatedResponse = await fetch(
-
-        `https://web-production-cc859.up.railway.app/partida/tabuleiro/${id}/${nomeJogador}`
-
-
+        `https://web-production-cc859.up.railway.app/partida/tabuleiro/${id}/${nomeJogador}/?token=${token}`
       );
       const updatedData: string[][] = await updatedResponse.json();
       const tabuleirosProcessados = updatedData.map(tabuleiro =>

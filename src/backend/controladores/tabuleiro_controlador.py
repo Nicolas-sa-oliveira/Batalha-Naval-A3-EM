@@ -1,5 +1,5 @@
-from modelos.tabuleiro import Tabuleiro
-from controladores.embarcacao_controlador import EmbarcacoesControlador
+from src.backend.modelos.tabuleiro import Tabuleiro
+from src.backend.controladores.embarcacao_controlador import EmbarcacoesControlador
 
 # Controlador do tabuleiro
 class TabuleiroControlador():

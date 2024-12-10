@@ -1,6 +1,6 @@
-from persistencia.partida_db import PartidaDB
-from controladores.tabuleiro_controlador import TabuleiroControlador
-from controladores.jogador_controlador import JogadorControlador
+from src.backend.persistencia.partida_db import PartidaDB
+from src.backend.controladores.tabuleiro_controlador import TabuleiroControlador
+from src.backend.controladores.jogador_controlador import JogadorControlador
 
 # Controlador da partida.
 class PartidaControlador:

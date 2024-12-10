@@ -1,4 +1,4 @@
-from modelos.embarcacao import FabricaEmbarcacao
+from src.backend.modelos.embarcacao import FabricaEmbarcacao
 
 # Controlador de embarcações
 class EmbarcacoesControlador():
