@@ -11,6 +11,7 @@ import uvicorn
 app = FastAPI()
 
 origins = [
+    "https://batalha-naval-a3-em.vercel.app"
     "https://batalha-naval-a3-em-copia.vercel.app",
     "http://localhost.tiangolo.com",
     "https://localhost.tiangolo.com",
