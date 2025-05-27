@@ -24,7 +24,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" style={{backgroundImage: "url('z3.jpg')",
+    }}>
       <body>
         <h1>Menu</h1>
           <nav>

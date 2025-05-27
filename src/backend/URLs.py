@@ -61,7 +61,6 @@ async def adicionar_jogador(nome: str, email: str, senha: str):
     return JogadorControlador.adicionar_jogador(nome, email, senha)
 
 @app.patch("/jogadores/edição/{nome}/{email}")
-# async def editar_jogador_por_nome(nome: str, email: str, token: str):
 async def editar_jogador_por_nome(nome: str, email: str):
     checagem = AutenticacaoControlador.checar_chave(token, nome)
     if (checagem == True):
@@ -70,7 +69,6 @@ async def editar_jogador_por_nome(nome: str, email: str):
         return {"message": "Não autenticado"}
 
 @app.patch("/jogadores/nova_senha/{nome}/{nova_senha}")
-# async def editar_senha_do_jogador(nome: str, nova_senha: str, token: str):
 async def editar_senha_do_jogador(nome: str, nova_senha: str):
     checagem = AutenticacaoControlador.checar_chave(token, nome)
     if (checagem == True):
@@ -79,7 +77,6 @@ async def editar_senha_do_jogador(nome: str, nova_senha: str):
         return {"message": "Não autenticado"}
 
 @app.delete("/jogadores/remoção/{nome}")
-# async def remover_jogador_por_nome(nome: str, token: str):
 async def remover_jogador_por_nome(nome: str):
     checagem = AutenticacaoControlador.checar_chave(token, nome)
     if (checagem == True):
@@ -96,7 +93,6 @@ def autenticar(nome: str, senha: str):
 # ========================== Fila
 
 @app.post("/fila/entrar/{nome_jogador}")
-# async def entrar_na_fila(nome_jogador: str, token: str):
 async def entrar_na_fila(nome_jogador: str):
     checagem = AutenticacaoControlador.checar_chave(token, nome_jogador)
     if (checagem == True):
@@ -105,7 +101,6 @@ async def entrar_na_fila(nome_jogador: str):
         return {"message": "Não autenticado"}
 
 @app.post("/fila/sair/{nome_jogador}")
-# async def sair_da_fila(nome_jogador: str, token: str):
 async def sair_da_fila(nome_jogador: str):
     checagem = AutenticacaoControlador.checar_chave(token, nome_jogador)
     if (checagem == True):
@@ -118,7 +113,6 @@ async def mostrar_jogadores_na_fila():
     return FilaControlador.mostrar_jogadores_na_fila()
 
 @app.get("/fila/checagem/{nome_jogador}")
-# async def checar_começo_de_partida(nome_jogador: str, token: str):
 async def checar_começo_de_partida(nome_jogador: str):
     checagem = AutenticacaoControlador.checar_chave(token, nome_jogador)
     if (checagem == True):
@@ -129,7 +123,6 @@ async def checar_começo_de_partida(nome_jogador: str):
 # ========================== Partida
 
 @app.get("/partida/tabuleiro/{id}/{nome_jogador}")
-# async def pegar_representacao_tabuleiro_partida(id: int, nome_jogador: str, token: str):
 async def pegar_representacao_tabuleiro_partida(id: int, nome_jogador: str):
     checagem = AutenticacaoControlador.checar_chave(token, nome_jogador)
     if (checagem == True):
@@ -138,7 +131,6 @@ async def pegar_representacao_tabuleiro_partida(id: int, nome_jogador: str):
         return {"message": "Não autenticado"}
 
 @app.get("/partida/embarcacoes/peças/{id}/{nome_jogador}")
-# async def checar_embarcacoes_disponiveis(id: int, nome_jogador: str, token: str):
 async def checar_embarcacoes_disponiveis(id: int, nome_jogador: str):
     checagem = AutenticacaoControlador.checar_chave(token, nome_jogador)
     if (checagem == True):
@@ -147,7 +139,6 @@ async def checar_embarcacoes_disponiveis(id: int, nome_jogador: str):
         return {"message": "Não autenticado"}
 
 @app.patch("/partida/tabuleiro/peças/{id}/{nome_jogador}/{embarcacao}/{coord_x}/{coord_y}/{orientacao}")
-# async def colocar_embarcacao_tabuleiro(id: int, nome_jogador: str, embarcacao: str, coord_x: str, coord_y: int, orientacao: str, token: str):
 async def colocar_embarcacao_tabuleiro(id: int, nome_jogador: str, embarcacao: str, coord_x: str, coord_y: int, orientacao: str):
     checagem = AutenticacaoControlador.checar_chave(token, nome_jogador)
     if (checagem == True):
@@ -156,7 +147,6 @@ async def colocar_embarcacao_tabuleiro(id: int, nome_jogador: str, embarcacao: s
         return {"message": "Não autenticado"}
 
 @app.get("/partida/tabuleiro/disparo/{id}/{nome_jogador}/{coord_x}/{coord_y}")
-# async def realizar_disparo(id: int, nome_jogador: str, coord_x: str, coord_y: int, token: str):
 async def realizar_disparo(id: int, nome_jogador: str, coord_x: str, coord_y: int):
     checagem = AutenticacaoControlador.checar_chave(token, nome_jogador)
     if (checagem == True):

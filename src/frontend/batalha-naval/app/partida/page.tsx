@@ -16,13 +16,13 @@ export default function Home() {
   const id = 1;
 
   const cor = {
-    '1': '#191970',
-    '2': '#00008B',
-    '3': '#1E90FF',
-    '4': '#A9A9A9',
+    '1': '#90EE90',
+    '2': '#006400',
+    '3': '#3CB371',
+    '4': '#2E8B57',
     '0': 'yellow',
     '9': 'red',
-    default: '#40E0D0',
+    'default': '#40E0D0',
   };
 
   useEffect(() => {
@@ -55,6 +55,7 @@ export default function Home() {
         tabuleiro.map(linha => linha.split(''))
       );
 
+      {/* @ts-ignore */}
       setTabuleiros(tabuleirosProcessados);
     } catch (error) {
       console.error('Erro:', error);
@@ -125,6 +126,7 @@ export default function Home() {
                 alignItems: 'center',
                 justifyContent: 'center',
                 fontWeight: 'bold',
+                
               }}
             >
               {numero}
@@ -141,6 +143,7 @@ export default function Home() {
                 alignItems: 'center',
                 justifyContent: 'center',
                 fontWeight: 'bold',
+                
               }}
             >
               {letras[i]}
@@ -155,8 +158,8 @@ export default function Home() {
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  backgroundColor: cor[celula] || cor.default,
-                  color: cor[celula] ? 'white' : 'white',
+                  backgroundColor: cor[celula as keyof typeof cor] || cor.default,
+                  color: cor[celula as keyof typeof cor] ? cor[celula as keyof typeof cor] : cor.default,
                   margin: '1px',
                 }}
               >
@@ -174,10 +177,12 @@ export default function Home() {
       <div style={{ display: 'flex', justifyContent: 'space-around', width: '100%' }}>
         <div>
           <h2>Meu Tabuleiro</h2>
+          {/* @ts-ignore */}
           {renderizarTabuleiro(tabuleiros[0])}
         </div>
         <div>
           <h2>Tabuleiro do Inimigo</h2>
+          {/* @ts-ignore */}
           {renderizarTabuleiro(tabuleiros[1])}
         </div>
       </div>

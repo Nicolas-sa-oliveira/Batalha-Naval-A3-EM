@@ -12,7 +12,7 @@ export default function Login() {
 
     try {
       // Montar a URL dinâmica
-      const url = `https://web-production-cc859.up.railway.app/autenticacao/${name}/${password}/`;
+      const url = `http://localhost:8000/autenticacao/${name}/${password}/`;
 
       // Fazer a requisição para o backend
       const response = await fetch(url, {

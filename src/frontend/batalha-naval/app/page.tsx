@@ -67,7 +67,7 @@ export default function Fila() {
   }, []);
 
   return (
-    <div style={{ padding: "20px" }}>
+    <div style={{ padding: "20px"}}>
       <h1>Gerenciamento da Fila</h1>
 
       {/* Formulário para entrar na fila */}
@@ -98,7 +98,10 @@ export default function Fila() {
         {jogadoresNaFila.length > 0 ? (
           <ul>
             {jogadoresNaFila.map((jogador, index) => (
-              <li key={index}>{jogador.nome}</li>
+              <li key={index}>
+                {/* @ts-ignore */}
+                {jogador.nome}
+                </li>
             ))}
           </ul>
         ) : (
